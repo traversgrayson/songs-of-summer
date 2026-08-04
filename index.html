@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Songs of the Summer</title>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="map"></div>
+
+<header id="title-card">
+  <p class="eyebrow">Summer 2026</p>
+  <h1>Songs of the<br>Summer</h1>
+  <p class="subhead"><span id="entry-count">–</span> people, <span id="entry-count-2">–</span> songs, one map</p>
+</header>
+
+<div id="status" class="status"></div>
+
+<footer id="legend">
+  <span class="legend-dot"></span> tap a pin to hear their song
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="geodata.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
