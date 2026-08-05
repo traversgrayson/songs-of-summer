@@ -87,6 +87,16 @@ html, body {
 }
 .subhead span { color: var(--teal); font-weight: 700; }
 
+.map-nav-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--pink);
+  text-decoration: none;
+}
+.map-nav-link:hover { text-decoration: underline; }
+
 /* ---------- Status toast (loading / errors) ---------- */
 .status {
   position: absolute;
@@ -218,6 +228,76 @@ html, body {
 .pop iframe {
   border-radius: 10px;
   display: block;
+}
+
+/* ---------- Password gate ---------- */
+#gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, #1c1a52, var(--navy-deep) 70%);
+}
+.gate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 19, 61, 0.85);
+  border: 1px solid rgba(255, 246, 233, 0.12);
+  border-radius: 20px;
+  padding: 32px 34px 28px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.gate-eyebrow {
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  background: linear-gradient(100deg, var(--coral), var(--pink) 45%, var(--gold) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gate-label {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: rgba(255, 246, 233, 0.7);
+}
+.gate-card input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 246, 233, 0.2);
+  background: rgba(255, 246, 233, 0.06);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+.gate-card input:focus { border-color: var(--teal); }
+.gate-card button {
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: var(--grape);
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.gate-card button:hover { background: var(--pink); }
+.gate-error {
+  display: none;
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--coral);
 }
 
 /* ---------- Mobile ---------- */
