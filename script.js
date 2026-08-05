@@ -38,6 +38,40 @@ function extractTrackId(link) {
   return m ? m[1] : null;
 }
 
+function extractYouTubeId(link) {
+  if (!link) return null;
+  const patterns = [
+    /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/
+  ];
+  for (const p of patterns) {
+    const m = link.match(p);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+function buildEmbed(link) {
+  const ytId = extractYouTubeId(link);
+  if (ytId) {
+    return `<iframe width="100%" height="152"
+        src="https://www.youtube.com/embed/${ytId}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        loading="lazy" allowfullscreen></iframe>`;
+  }
+  const trackId = extractTrackId(link);
+  if (trackId) {
+    return `<iframe src="https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0"
+        width="100%" height="80" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>`;
+  }
+  return `<div class="pop-noembed">no song added yet</div>`;
+}
+
 function loadGeocodeCache() {
   try { return JSON.parse(localStorage.getItem(GEOCODE_CACHE_KEY)) || {}; }
   catch { return {}; }
@@ -73,13 +107,7 @@ function makeIcon(color) {
 
 // ====== POPUP CONTENT ======
 function popupHtml(entry, color) {
-  const trackId = extractTrackId(entry.link);
-  const embed = trackId
-    ? `<iframe src="https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0"
-        width="100%" height="80" frameborder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>`
-    : `<div class="pop-noembed">no song added yet</div>`;
+  const embed = buildEmbed(entry.link);
 
   const songBlock = entry.song
     ? `<p class="pop-song">${escapeHtml(entry.song)}</p>
