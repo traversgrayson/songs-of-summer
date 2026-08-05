@@ -1,5 +1,5 @@
 
-const CLIENT_ID = "Pfde86794c4bf4f17b9abb587fd72a9f5";
+const CLIENT_ID = "fde86794c4bf4f17b9abb587fd72a9f5";
 const REDIRECT_URI = window.location.origin + window.location.pathname;
 const SCOPES = "playlist-modify-public playlist-modify-private";
 
