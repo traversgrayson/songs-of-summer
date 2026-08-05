@@ -12,21 +12,34 @@
 </head>
 <body>
 
+<div id="gate-overlay">
+  <form id="gate-form" class="gate-card">
+    <p class="gate-eyebrow">Songs of the Summer</p>
+    <p class="gate-label">this page is locked — enter the password</p>
+    <input id="gate-input" type="password" autocomplete="off" autofocus />
+    <button type="submit">Unlock</button>
+    <p id="gate-error" class="gate-error">wrong password, try again</p>
+  </form>
+</div>
+
 <div id="map"></div>
 
 <header id="title-card">
   <p class="eyebrow">Summer 2026</p>
   <h1>Songs of the<br>Summer</h1>
+  <p class="subhead"><span id="entry-count">–</span> people, <span id="entry-count-2">–</span> songs, one map</p>
+  <a href="playlist.html" class="map-nav-link">Open the playlist →</a>
 </header>
 
 <div id="status" class="status"></div>
 
 <footer id="legend">
-  <span class="legend-dot"></span> Tap on pins for more info and to hear specific songs
+  <span class="legend-dot"></span> tap a pin to hear their song
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="gate.js"></script>
 <script src="geodata.js"></script>
 <script src="script.js"></script>
 </body>
