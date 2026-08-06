@@ -2,7 +2,7 @@
 // After you run "Generate / Update Playlist" once on playlist-admin.html,
 // copy the Playlist ID it shows you and paste it here. This page just
 // displays that playlist — it never needs your Spotify login.
-const PLAYLIST_ID = "7ziI0bX3JBLzFJr4wswcA";
+const PLAYLIST_ID = "7ziI0bX3JBLzFJr4wswcAF";
 
 const wrap = document.getElementById('playlist-embed-wrap');
 
