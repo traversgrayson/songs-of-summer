@@ -2,11 +2,11 @@
 // After you run "Generate / Update Playlist" once on playlist-admin.html,
 // copy the Playlist ID it shows you and paste it here. This page just
 // displays that playlist — it never needs your Spotify login.
-const PLAYLIST_ID = "PASTE_PLAYLIST_ID_HERE";
+const PLAYLIST_ID = "7ziI0bX3JBLzFJr4wswcA";
 
 const wrap = document.getElementById('playlist-embed-wrap');
 
-if (!PLAYLIST_ID || PLAYLIST_ID === "PASTE_PLAYLIST_ID_HERE") {
+if (!PLAYLIST_ID || PLAYLIST_ID === "7ziI0bX3JBLzFJr4wswcA") {
   wrap.innerHTML = `<p class="playlist-status error">
     no playlist connected yet — run the admin page once and paste the
     playlist ID into playlist.js
