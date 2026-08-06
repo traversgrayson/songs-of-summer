@@ -30,20 +30,11 @@
 <main class="playlist-main">
   <p class="eyebrow">Summer 2026</p>
   <h1>The Playlist</h1>
-  <p class="subhead">Every song from the map, synced to one Spotify playlist.</p>
+  <p class="subhead">Every song from the map, all in one place.</p>
 
-  <div class="playlist-actions">
-    <button id="connect-btn" class="btn btn-primary">Connect Spotify</button>
-    <button id="generate-btn" class="btn btn-primary" style="display:none">Generate / Update Playlist</button>
-    <button id="signout-btn" class="btn btn-ghost" style="display:none">Disconnect</button>
-    <span id="who-connected" class="who-connected"></span>
-  </div>
-
-  <p id="playlist-status" class="playlist-status"></p>
-  <div id="playlist-result"></div>
+  <div id="playlist-embed-wrap"></div>
 </main>
 
-<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
 <script src="gate.js"></script>
 <script src="playlist.js"></script>
 </body>
