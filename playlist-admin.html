@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Songs of the Summer — Playlist Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="playlist-admin.css">
+</head>
+<body class="playlist-body">
+
+<div id="gate-overlay">
+  <form id="gate-form" class="gate-card">
+    <p class="gate-eyebrow">Songs of the Summer</p>
+    <p class="gate-label">this page is locked — enter the password</p>
+    <input id="gate-input" type="password" autocomplete="off" autofocus />
+    <button type="submit">Unlock</button>
+    <p id="gate-error" class="gate-error">wrong password, try again</p>
+  </form>
+</div>
+
+<nav class="top-nav">
+  <a href="index.html">← Map</a>
+  <span class="top-nav-current">Playlist Admin (not linked publicly)</span>
+</nav>
+
+<main class="playlist-main">
+  <p class="eyebrow">Admin only</p>
+  <h1>Update Playlist</h1>
+  <p class="subhead">Connect your Spotify and sync the public playlist to match the current sheet.</p>
+
+  <div class="playlist-actions">
+    <button id="connect-btn" class="btn btn-primary">Connect Spotify</button>
+    <button id="generate-btn" class="btn btn-primary" style="display:none">Generate / Update Playlist</button>
+    <button id="signout-btn" class="btn btn-ghost" style="display:none">Disconnect</button>
+    <span id="who-connected" class="who-connected"></span>
+  </div>
+
+  <p id="playlist-status" class="playlist-status"></p>
+  <div id="playlist-result"></div>
+</main>
+
+<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="gate.js"></script>
+<script src="playlist-admin.js"></script>
+</body>
+</html>
