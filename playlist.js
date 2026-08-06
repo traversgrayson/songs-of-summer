@@ -6,7 +6,7 @@ const PLAYLIST_ID = "7ziI0bX3JBLzFJr4wswcA";
 
 const wrap = document.getElementById('playlist-embed-wrap');
 
-if (!PLAYLIST_ID || PLAYLIST_ID === "7ziI0bX3JBLzFJr4wswcA") {
+if (!PLAYLIST_ID) {
   wrap.innerHTML = `<p class="playlist-status error">
     no playlist connected yet — run the admin page once and paste the
     playlist ID into playlist.js
