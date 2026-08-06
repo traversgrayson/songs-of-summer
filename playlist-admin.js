@@ -1,5 +1,4 @@
 // ====== CONFIG ======
-// Paste the Client ID from your Spotify Developer Dashboard app here.
 
 const CLIENT_ID = "fde86794c4bf4f17b9abb587fd72a9f5";
 const REDIRECT_URI = window.location.origin + window.location.pathname;
@@ -170,7 +169,7 @@ async function findExistingPlaylist(userId, accessToken) {
 }
 
 async function createPlaylist(userId, accessToken) {
-  const data = await spotifyFetch(`https://api.spotify.com/v1/users/${userId}/playlists`, accessToken, {
+  const data = await spotifyFetch(`https://api.spotify.com/v1/me/playlists`, accessToken, {
     method: 'POST',
     body: JSON.stringify({
       name: PLAYLIST_NAME,
@@ -184,13 +183,13 @@ async function createPlaylist(userId, accessToken) {
 async function overwritePlaylistTracks(playlistId, uris, accessToken) {
   // First 100 replaces the whole playlist; remaining batches get appended.
   const first = uris.slice(0, 100);
-  await spotifyFetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, accessToken, {
+  await spotifyFetch(`https://api.spotify.com/v1/playlists/${playlistId}/items`, accessToken, {
     method: 'PUT',
     body: JSON.stringify({ uris: first })
   });
   for (let i = 100; i < uris.length; i += 100) {
     const batch = uris.slice(i, i + 100);
-    await spotifyFetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, accessToken, {
+    await spotifyFetch(`https://api.spotify.com/v1/playlists/${playlistId}/items`, accessToken, {
       method: 'POST',
       body: JSON.stringify({ uris: batch })
     });
@@ -328,3 +327,5 @@ signoutBtn.addEventListener('click', () => { clearToken(); updateUiForAuthState(
   await handleRedirectIfPresent();
   await updateUiForAuthState();
 })();
+
+ 
