@@ -8,8 +8,10 @@ const PALETTE = ["#FF6B5B", "#FFC93C", "#00C2C2", "#9B5DE5", "#FF5FA2"];
 const GEOCODE_CACHE_KEY = "sots_geocode_cache_v1";
 
 // ====== MAP SETUP ======
-const map = L.map('map', { zoomControl: true, worldCopyJump: true })
+const map = L.map('map', { zoomControl: false, worldCopyJump: true })
   .setView([30, -30], 2.4);
+
+L.control.zoom({ position: 'topright' }).addTo(map);
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap &copy; CARTO',
