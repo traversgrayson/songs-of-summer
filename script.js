@@ -94,6 +94,10 @@ async function geocodeLive(location) {
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // ====== MARKER ICON ======
+const isMobile = window.matchMedia('(max-width: 560px)').matches;
+const MARKER_SIZE = isMobile ? 30 : 22;
+const MARKER_CORE_SIZE = isMobile ? 16 : 12;
+
 function makeIcon(color) {
   return L.divIcon({
     className: '',
@@ -101,9 +105,9 @@ function makeIcon(color) {
              <div class="ring" style="background:${color}"></div>
              <div class="core" style="background:${color}"></div>
            </div>`,
-    iconSize: [22, 22],
-    iconAnchor: [11, 11],
-    popupAnchor: [0, -10]
+    iconSize: [MARKER_SIZE, MARKER_SIZE],
+    iconAnchor: [MARKER_SIZE / 2, MARKER_SIZE / 2],
+    popupAnchor: [0, -(MARKER_SIZE / 2)]
   });
 }
 
