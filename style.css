@@ -88,8 +88,8 @@ html, body {
 .subhead span { color: var(--teal); font-weight: 700; }
 
 .map-nav-link {
-  display: inline-block;
-  margin-top: 10px;
+  display: block;
+  margin-top: 8px;
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   color: var(--pink);
@@ -179,7 +179,7 @@ html, body {
   padding: 0;
   overflow: hidden;
 }
-.leaflet-popup-content { margin: 0; width: 260px !important; }
+.leaflet-popup-content { margin: 0; width: min(78vw, 260px) !important; }
 .leaflet-popup-tip { background: var(--navy); }
 .leaflet-popup-close-button {
   color: rgba(255,246,233,0.6) !important;
@@ -276,7 +276,7 @@ html, body {
   background: rgba(255, 246, 233, 0.06);
   color: var(--cream);
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
 }
 .gate-card input:focus { border-color: var(--teal); }
@@ -306,4 +306,16 @@ html, body {
   #title-card h1 { font-size: 24px; }
   #legend { display: none; }
   .status { left: 14px; bottom: 14px; right: 14px; }
+
+  /* Bigger tap targets — fingers need more room than a mouse cursor */
+  .leaflet-control-zoom a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 18px !important;
+  }
+  .pulse-marker { width: 30px; height: 30px; }
+  .pulse-marker .core, .pulse-marker .ring {
+    width: 16px; height: 16px; margin: -8px 0 0 -8px;
+  }
 }
