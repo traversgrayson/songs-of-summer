@@ -162,7 +162,9 @@ async function main() {
       location: (r['Location'] || '').trim(),
       song: (r['Song'] || '').trim(),
       artist: (r['Artist'] || '').trim(),
-      link: (r['Link'] || r['Embed Linjk'] || r['Embed Link'] || '').trim()
+      link: (r['Link'] || r['Embed Linjk'] || r['Embed Link'] || '').trim(),
+      lat: parseFloat(r['Latitude']),
+      lng: parseFloat(r['Longitude'])
     }))
     .filter(r => r.name && r.location);
 
@@ -178,7 +180,8 @@ async function main() {
 
   for (const entry of rows) {
     const key = entry.location.toLowerCase();
-    let coords = KNOWN_LOCATIONS[key] || geocodeCache[key];
+    const hasSheetCoords = !isNaN(entry.lat) && !isNaN(entry.lng);
+    let coords = hasSheetCoords ? [entry.lat, entry.lng] : (KNOWN_LOCATIONS[key] || geocodeCache[key]);
 
     if (!coords) {
       setStatus(`locating ${entry.location}…`);
@@ -193,8 +196,9 @@ async function main() {
       }
     }
 
-    const idx = locationCounts[key] || 0;
-    locationCounts[key] = idx + 1;
+    const coordKey = `${coords[0].toFixed(4)},${coords[1].toFixed(4)}`;
+    const idx = locationCounts[coordKey] || 0;
+    locationCounts[coordKey] = idx + 1;
     const [lat, lng] = jitter(coords, idx);
 
     const color = hashColor(entry.name);
